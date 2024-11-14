@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Student Tree View -->
+        <record model="ir.ui.view" id="student_list_view">
+            <field name="name">Student List</field>
+            <field name="model">studentmanagement.student</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="fileNumber"/>
+                    <field name="lastName"/>
+                    <field name="firstName"/>
+                    <field name="email"/>
+                    <field name="department_ids" widget="many2many_tags"/>
+                    <field name="paid"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Student Form View -->
+        <record model="ir.ui.view" id="student_form_view">
+            <field name="name">Student Form</field>
+            <field name="model">studentmanagement.student</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="fileNumber" readonly="1"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="lastName"/>
+                                <field name="firstName"/>
+                                <field name="dateOfBirth"/>
+                                <field name="email"/>
+                            </group>
+                            <group>
+                                <field name="phoneNumber"/>
+                                <field name="cin"/>
+                                <field name="cne"/>
+                                <field name="paid"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Departments" name="departments">
+                                <field name="department_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Student Action Window -->
+        <record model="ir.actions.act_window" id="student_action_window">
+            <field name="name">Students</field>
+            <field name="res_model">studentmanagement.student</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first student!
+                </p>
+                <p>
+                    Create students and assign them to departments.
+                </p>
+            </field>
+        </record>
+    </data>
+</odoo>

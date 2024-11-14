@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Main Menu -->
+        <menuitem
+            id="studentmanagement_root_menu"
+            name="Student Management"
+            sequence="10"/>
+
+        <!-- Student Submenu -->
+        <menuitem
+            name="Students"
+            id="studentmanagement_student_menu"
+            parent="studentmanagement_root_menu"
+            action="student_action_window"
+            sequence="10"/>
+
+        <!-- Department Submenu -->
+        <menuitem
+            name="Departments"
+            id="studentmanagement_department_menu"
+            parent="studentmanagement_root_menu"
+            action="department_action_window"
+            sequence="20"/>
+    </data>
+</odoo>

@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_studentmanagement_student,studentmanagement.student,model_studentmanagement_student,base.group_user,1,1,1,1
+access_studentmanagement_department,studentmanagement.department,model_studentmanagement_department,base.group_user,1,1,1,1

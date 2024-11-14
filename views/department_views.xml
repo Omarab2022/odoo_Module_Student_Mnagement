@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Department Tree View -->
+        <record model="ir.ui.view" id="department_list_view">
+            <field name="name">Department list</field>
+            <field name="model">studentmanagement.department</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="chief_id"/>
+                    <field name="total_students"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Department Form View -->
+        <record model="ir.ui.view" id="department_form_view">
+            <field name="name">Department Form</field>
+            <field name="model">studentmanagement.department</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name" placeholder="Department Name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                                <field name="chief_id"/>
+                            </group>
+                            <group>
+                                <field name="total_students"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Students" name="students">
+                                <field name="student_ids">
+                                    <tree>
+                                        <field name="fileNumber"/>
+                                        <field name="firstName"/>
+                                        <field name="lastName"/>
+                                        <field name="email"/>
+                                        <field name="paid"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Department Search View -->
+        <record model="ir.ui.view" id="department_search_view">
+            <field name="name">department.search</field>
+            <field name="model">studentmanagement.department</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="chief_id"/>
+                    <filter string="No Students" name="no_students"
+                            domain="[('total_students', '=', 0)]"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Department Action Window -->
+        <record model="ir.actions.act_window" id="department_action_window">
+            <field name="name">Departments</field>
+            <field name="res_model">studentmanagement.department</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first department!
+                </p>
+                <p>
+                    Create departments and assign a chief to manage them.
+                    You can later associate students with each department.
+                </p>
+            </field>
+        </record>
+
+        <!-- Menu Items -->
+        <menuitem name="Departments"
+                  id="studentmanagement_department_menu"
+                  parent="studentmanagement_root_menu"
+                  action="department_action_window"
+                  sequence="20"/>
+    </data>
+</odoo>
